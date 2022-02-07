@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import colorData from './data/color-data.json'
 import ColorList from './ColorList';
+import AddColorForm from './AddColorForm'
 
 function App() {
   const [colors, setColors] = useState(colorData);
@@ -19,11 +20,17 @@ function App() {
   };
 
   return (
-    <ColorList
-      colors={colors}
-      onRemoveColor={removeColor}
-      onRateColor={rateColor}
-    />
+    <>
+      <AddColorForm
+        onNewColor={(title, color) => alert(`TODO: Create ${title} - ${color}`)}
+      />
+      <ColorList
+        colors={colors}
+        onRemoveColor={removeColor}
+        onRateColor={rateColor}
+      />
+    </>
+
   );
 }
 
