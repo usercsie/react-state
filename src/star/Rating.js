@@ -1,5 +1,6 @@
 import { FaStar } from 'react-icons/fa'
 import { useState } from 'react'
+import { createArray } from '../lib'
 
 const Star = ({ selected = false, onSelect = f => f }) => {
     return (
@@ -7,12 +8,10 @@ const Star = ({ selected = false, onSelect = f => f }) => {
     )
 }
 
-const createArray = length => [...Array(length)]
-
-function Rating({ totalStars = 5 }) {
+function Rating({ style = {}, totalStars = 5, ...props }) {
     const [selectedStars, setSelectedStars] = useState(0)
     return (
-        <div>
+        <div style={{ padding: 5, ...style }} {...props}>
             {createArray(totalStars).map((n, i) =>
                 <Star
                     key={i}
