@@ -8,20 +8,23 @@ const Star = ({ selected = false, onSelect = f => f }) => {
     )
 }
 
-function Rating({ style = {}, totalStars = 5, ...props }) {
-    const [selectedStars, setSelectedStars] = useState(0)
+function Rating({
+    totalStars = 5,
+    selectedStars = 0,
+    onRate = f => f
+}) {
     return (
-        <div style={{ padding: 5, ...style }} {...props}>
+        <>
             {createArray(totalStars).map((n, i) =>
                 <Star
                     key={i}
                     selected={selectedStars > i}
-                    onSelect={() => setSelectedStars(i + 1)} />
+                    onSelect={() => onRate(i + 1)} />
             )}
             <p>
                 {selectedStars} of {totalStars} stars
             </p>
-        </div>
+        </>
     )
 };
 
